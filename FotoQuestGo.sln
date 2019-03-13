@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotoQuestGoRepository", "FotoQuestGoRepository\FotoQuestGoRepository.csproj", "{EE538A75-7083-4130-8889-781195A8B792}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotoQuestGoQueryApi", "FotoQuestGoQueryApi\FotoQuestGoQueryApi.csproj", "{0B17F7E1-0C33-4077-B6F9-EFF7BC1EB832}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotoQuestGoCommandApi", "FotoQuestGoCommandApi\FotoQuestGoCommandApi.csproj", "{FC24B68F-1A83-4A3B-8A7F-C6FCA3146D1E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FA2AEABE-AE79-47A0-AA21-2D373D0C6782}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE538A75-7083-4130-8889-781195A8B792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE538A75-7083-4130-8889-781195A8B792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE538A75-7083-4130-8889-781195A8B792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE538A75-7083-4130-8889-781195A8B792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B17F7E1-0C33-4077-B6F9-EFF7BC1EB832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B17F7E1-0C33-4077-B6F9-EFF7BC1EB832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B17F7E1-0C33-4077-B6F9-EFF7BC1EB832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B17F7E1-0C33-4077-B6F9-EFF7BC1EB832}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC24B68F-1A83-4A3B-8A7F-C6FCA3146D1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC24B68F-1A83-4A3B-8A7F-C6FCA3146D1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC24B68F-1A83-4A3B-8A7F-C6FCA3146D1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC24B68F-1A83-4A3B-8A7F-C6FCA3146D1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA2AEABE-AE79-47A0-AA21-2D373D0C6782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA2AEABE-AE79-47A0-AA21-2D373D0C6782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA2AEABE-AE79-47A0-AA21-2D373D0C6782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA2AEABE-AE79-47A0-AA21-2D373D0C6782}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BBEAD26B-358F-44DB-A8E3-DFC8EA4994FF}
+	EndGlobalSection
+EndGlobal

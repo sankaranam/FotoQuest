@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  fotoquestgocommandapi:
+    image: ${DOCKER_REGISTRY-}fotoquestgocommandapi
+    build:
+      context: .
+      dockerfile: FotoQuestGoCommandApi/Dockerfile
+
+  fotoquestgoqueryapi:
+    image: ${DOCKER_REGISTRY-}fotoquestgoqueryapi
+    build:
+      context: .
+      dockerfile: FotoQuestGoQueryApi/Dockerfile
+
+  db:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+        SA_PASSWORD: "Your_password123"
+        ACCEPT_EULA: "Y"
+    ports:
+      - 1433:1433
+
