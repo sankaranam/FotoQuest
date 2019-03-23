@@ -2,9 +2,10 @@
 
 namespace FotoQuestGoRepository.Models
 {
-    class UserDetails
+    public class UserDetails
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }        
+        public string Name { get; set; }
+        public string Email { get; set; }
     }
 }

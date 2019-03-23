@@ -14,7 +14,7 @@ services:
       dockerfile: FotoQuestGoQueryApi/Dockerfile
 
   db:
-    image: "mcr.microsoft.com/mssql/server"
+    image: "mcr.microsoft.com/mssql/server:2017-latest"
     environment:
         SA_PASSWORD: "Password123!"
         ACCEPT_EULA: "Y"
