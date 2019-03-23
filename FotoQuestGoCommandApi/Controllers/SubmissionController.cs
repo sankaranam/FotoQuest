@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace FotoQuestGoCommandApi.Controllers
 {
-    [Route("api/fotoquestgo/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class SubmissionController : ControllerBase
     {

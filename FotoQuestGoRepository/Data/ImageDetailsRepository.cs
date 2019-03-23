@@ -5,7 +5,7 @@ namespace FotoQuestGoRepository.Data
 {
     public class ImageDetailsRepository : Repository<ImageDetails>, IImageDetailsRepository
     {
-        public ImageDetailsRepository(DbContext context) : base(context)
+        public ImageDetailsRepository(SubmissionDataContext context) : base(context)
         {
         }
     }

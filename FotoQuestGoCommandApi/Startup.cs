@@ -23,7 +23,7 @@ namespace FotoQuestGoCommandApi
         {
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            var connectionString = "";
+            var connectionString = Configuration.GetConnectionString("DatabaseConnection");
             services.AddDbContext<SubmissionDataContext>(options => options.UseSqlServer(connectionString));
             services.AddDbContext<UserContext>(options => options.UseSqlServer(connectionString));
             RepositoryDiConfig.WireUp(services);
@@ -53,7 +53,7 @@ namespace FotoQuestGoCommandApi
             }
             else
             {
-                app.UseHsts();
+                //app.UseHsts();
             }
 
             //app.UseHttpsRedirection();

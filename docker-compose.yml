@@ -6,13 +6,19 @@ services:
     build:
       context: .
       dockerfile: FotoQuestGoCommandApi/Dockerfile
-
+    depends_on:
+      - db
+    networks:
+      - nat
   fotoquestgoqueryapi:
     image: ${DOCKER_REGISTRY-}fotoquestgoqueryapi
     build:
       context: .
       dockerfile: FotoQuestGoQueryApi/Dockerfile
-
+    depends_on:
+      - db
+    networks:
+      - nat
   db:
     image: "mcr.microsoft.com/mssql/server:2017-latest"
     environment:
@@ -20,4 +26,9 @@ services:
         ACCEPT_EULA: "Y"
     ports:
       - 1433:1433
+    networks:
+      - nat
+networks:
+  nat:
+    driver: bridge
 

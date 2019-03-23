@@ -5,7 +5,7 @@ namespace FotoQuestGoRepository.Data
 {
     public class SubmissionDataContext : DbContext
     {
-        public SubmissionDataContext(DbContextOptions options) : base(options)
+        public SubmissionDataContext(DbContextOptions<SubmissionDataContext> options) : base(options)
         {
         }
 

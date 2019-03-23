@@ -5,7 +5,7 @@ namespace FotoQuestGoRepository.Data
 {
     public class QuestionnaireDataRepository : Repository<QuestionnaireData>, IQuestionnaireDataRepository
     {
-        public QuestionnaireDataRepository(DbContext context) : base(context)
+        public QuestionnaireDataRepository(SubmissionDataContext context) : base(context)
         {
         }
     }
