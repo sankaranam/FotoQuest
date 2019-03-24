@@ -3,6 +3,8 @@
 This is a sample application designed to submit and retrieve image and metadata for fotoquest-go application
 This project is implemented in docker and using microservice for sepcific jobs viz, command API, Query API, Database.
 
+### swagger hosting ##
+https://sankaranam.github.io/FotoQuest/
 
 ### Following is the general description of the solution
 
