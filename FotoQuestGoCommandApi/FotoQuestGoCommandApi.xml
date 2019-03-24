@@ -9,7 +9,7 @@
             Submission data command controller.
             </summary>
         </member>
-        <member name="M:FotoQuestGoCommandApi.Controllers.SubmissionCommandController.SubmitData(FotoQuestGo.DataSubmissionService.Interfaces.SubmissionViewModel)">
+        <member name="M:FotoQuestGoCommandApi.Controllers.SubmissionCommandController.SubmitData(FotoQuestGo.DataSubmissionService.Interfaces.SubmissionViewModel,System.Collections.Generic.List{Microsoft.AspNetCore.Http.IFormFile})">
             <summary>
             Submit the FotoQuest data
             </summary>

@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FotoQuestGoCommandApi", "Fo
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FA2AEABE-AE79-47A0-AA21-2D373D0C6782}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotoQuestGo.DataSubmissionService", "FotoQuestGo.DataSubmissionService\FotoQuestGo.DataSubmissionService.csproj", "{CBD16182-B011-4AC8-BBE9-8A752CAFF0A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FotoQuestGo.DataSubmissionService", "FotoQuestGo.DataSubmissionService\FotoQuestGo.DataSubmissionService.csproj", "{CBD16182-B011-4AC8-BBE9-8A752CAFF0A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

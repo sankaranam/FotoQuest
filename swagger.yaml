@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   version: v1
-  title: FotoQuest Go API (combined swagger.json)
+  title: FotoQuest Go Query API
 paths:
   '/api/fotoquest/SubmissionQuery/{id}':
     get:
@@ -58,13 +58,12 @@ paths:
         - name: ImageVersion
           in: query
           required: true
-          type: integer
-          format: int32
+          type: string
           enum:
-            - 0
-            - 1
-            - 2
-            - 3
+            - Thumbnail
+            - Small
+            - Large
+            - Custom
         - name: Width
           in: query
           required: false
@@ -89,7 +88,10 @@ paths:
       summary: Submit the FotoQuest data
       operationId: SubmitData
       consumes: []
-      produces: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
       parameters:
         - name: Id
           in: query
@@ -110,7 +112,7 @@ paths:
           required: false
           type: string
           format: date-time
-        - name: ImageList
+        - name: ImageMetaDataList
           in: query
           required: false
           type: array
@@ -124,9 +126,18 @@ paths:
           items: {}
           collectionFormat: multi
           uniqueItems: false
+        - name: files
+          in: query
+          required: false
+          type: array
+          items: {}
+          collectionFormat: multi
+          uniqueItems: false
       responses:
         '200':
           description: Success
+          schema:
+            $ref: '#/definitions/SubmissionViewModel'
         '400':
           description: Bad Request
   /api/User:
@@ -168,15 +179,15 @@ paths:
           format: uuid
         - name: FirstName
           in: query
-          required: false
+          required: true
           type: string
         - name: LastName
           in: query
-          required: false
+          required: true
           type: string
         - name: Email
           in: query
-          required: false
+          required: true
           type: string
       responses:
         '200':
@@ -186,14 +197,38 @@ paths:
         '400':
           description: Bad Request
 definitions:
+  SubmissionViewModel:
+    type: object
+    properties:
+      id:
+        format: uuid
+        type: string
+      userId:
+        format: uuid
+        type: string
+      coordinates:
+        type: string
+      timeStamp:
+        format: date-time
+        type: string
+      imageMetaDataList:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/ImageViewModel'
+      questionnaire:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/QuestionnaireViewModel'
   ImageViewModel:
     type: object
     properties:
       id:
         format: uuid
         type: string
-      file:
-        $ref: '#/definitions/IFormFile'
+      fileName:
+        type: string
       submissionId:
         format: uuid
         type: string
@@ -218,33 +253,6 @@ definitions:
         type: string
       answer:
         type: string
-  IFormFile:
-    type: object
-    properties:
-      contentType:
-        type: string
-        readOnly: true
-      contentDisposition:
-        type: string
-        readOnly: true
-      headers:
-        type: object
-        additionalProperties:
-          uniqueItems: false
-          type: array
-          items:
-            type: string
-        readOnly: true
-      length:
-        format: int64
-        type: integer
-        readOnly: true
-      name:
-        type: string
-        readOnly: true
-      fileName:
-        type: string
-        readOnly: true
   FileStreamResult:
     type: object
     properties:
@@ -320,6 +328,10 @@ definitions:
         type: boolean
         readOnly: true
   UserViewModel:
+    required:
+      - firstName
+      - lastName
+      - email
     type: object
     properties:
       id:
@@ -331,27 +343,3 @@ definitions:
         type: string
       email:
         type: string
-  SubmissionViewModel:
-    type: object
-    properties:
-      id:
-        format: uuid
-        type: string
-      userId:
-        format: uuid
-        type: string
-      coordinates:
-        type: string
-      timeStamp:
-        format: date-time
-        type: string
-      imageList:
-        uniqueItems: false
-        type: array
-        items:
-          $ref: '#/definitions/ImageViewModel'
-      questionnaire:
-        uniqueItems: false
-        type: array
-        items:
-          $ref: '#/definitions/QuestionnaireViewModel'

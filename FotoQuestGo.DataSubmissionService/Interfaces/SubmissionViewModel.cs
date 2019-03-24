@@ -23,13 +23,14 @@ namespace FotoQuestGo.DataSubmissionService.Interfaces
         /// </summary>
         public DateTimeOffset? TimeStamp { get; set; }
         /// <summary>
-        /// Submission related list of Images
+        /// Submission related ImageMetaDataList
         /// </summary>
         [DataType("Array<ImageViewModel>")]
-        public ICollection<ImageViewModel> ImageList { set; get; }
+        public ICollection<ImageViewModel> ImageMetaDataList { set; get; }
         /// <summary>
         /// Submission related list of Question
         /// </summary>
+        [DataType("Array<QuestionnaireViewModel>")]
         public ICollection<QuestionnaireViewModel> Questionnaire { get; set; }
     }
 }

@@ -30,9 +30,9 @@ namespace FotoQuestGoCommandApi.Controllers
         /// <returns>OK</returns>
         /// <returns>BadRequest</returns>
         [HttpPost()]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SubmissionViewModel),StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> SubmitData(SubmissionViewModel submissionViewModel)
+        public async Task<IActionResult> SubmitData(SubmissionViewModel submissionViewModel, List<IFormFile> files)
         {
             var validationresult = _submissionCommandService.IsValid(submissionViewModel);
             if (validationresult.IsValid == false)
@@ -40,9 +40,9 @@ namespace FotoQuestGoCommandApi.Controllers
                 return BadRequest(validationresult.ErrorMessage);
             }
 
-            await _submissionCommandService.SaveSubmission(submissionViewModel);
+            var result = await _submissionCommandService.SaveSubmission(submissionViewModel, files);
 
-            return Ok();
+            return Ok(result);
         }
     }
 }

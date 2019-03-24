@@ -11,15 +11,15 @@ namespace FotoQuestGo.DataSubmissionService.Interfaces
         /// </summary>
         public Guid? Id { get; set; }
         /// <summary>
-        /// File
+        /// FileName
         /// </summary>
-        public IFormFile File { get; set; }
+        public string FileName { get; set; }
         /// <summary>
         /// SubmissionId
         /// </summary>
         public Guid? SubmissionId { get; set; }
         /// <summary>
-        /// Direction North=0, East=1, South=2, West=3, Ground=4
+        /// Direction of image
         /// </summary>
         public Direction Direction { get; set; }
     }
