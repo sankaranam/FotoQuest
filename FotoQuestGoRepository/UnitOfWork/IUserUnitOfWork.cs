@@ -6,7 +6,7 @@ namespace FotoQuestGoRepository.UnitOfWork
 {
     public interface IUserUnitOfWork : IDisposable
     {
-        IUserRepository UserRepo { get; }
+        IUserRepository UserRepository { get; }
         Task<int> CompleteAsync();
     }
 }

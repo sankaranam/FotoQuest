@@ -1,5 +1,4 @@
 ﻿using FotoQuestGoRepository.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace FotoQuestGoRepository.Data
 {

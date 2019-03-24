@@ -9,6 +9,6 @@ namespace FotoQuestGoRepository.Data
         {
         }
 
-        public DbSet<UserDetails> users { get; set; }
+        public DbSet<UserDetails> UserDetails { get; set; }
     }
 }

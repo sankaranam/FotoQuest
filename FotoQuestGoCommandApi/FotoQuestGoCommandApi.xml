@@ -16,5 +16,25 @@
             <returns>OK</returns>
             <returns>BadRequest</returns>
         </member>
+        <member name="T:FotoQuestGoCommandApi.Controllers.UserController">
+            <summary>
+            User controller.
+            </summary>
+        </member>
+        <member name="M:FotoQuestGoCommandApi.Controllers.UserController.CreateUser(FotoQuestGo.DataSubmissionService.Interfaces.UserViewModel)">
+            <summary>
+            Create User
+            </summary>
+            <returns>OK</returns>
+            <returns>BadRequest</returns>
+        </member>
+        <member name="M:FotoQuestGoCommandApi.Controllers.UserController.GetUser(System.Nullable{System.Guid})">
+            <summary>
+            Get User
+            </summary>
+            <returns>OK</returns>
+            <returns>BadRequest</returns>
+            <returns>NotFound</returns>
+        </member>
     </members>
 </doc>

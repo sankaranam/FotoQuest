@@ -25,6 +25,7 @@ namespace FotoQuestGo.DataSubmissionService.Interfaces
         /// <summary>
         /// ImageVersion
         /// </summary>
+        [EnumDataType(typeof(ImageVersion))]
         public ImageVersion ImageVersion { get; set; }
         /// <summary>
         /// Width if ImageVersion is custom

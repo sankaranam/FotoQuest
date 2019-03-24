@@ -1,55 +1,8 @@
 swagger: '2.0'
 info:
   version: v1
-  title: FotoQuest Go API (combined swagger.json files)
+  title: FotoQuest Go API (combined swagger.json)
 paths:
-  /api/fotoquest/SubmissionCommand:
-    post:
-      tags:
-        - SubmissionCommand
-      summary: Submit the FotoQuest data
-      operationId: SubmitData
-      consumes: []
-      produces: []
-      parameters:
-        - name: Id
-          in: query
-          required: false
-          type: string
-          format: uuid
-        - name: UserId
-          in: query
-          required: false
-          type: string
-          format: uuid
-        - name: Coordinates
-          in: query
-          required: false
-          type: string
-        - name: TimeStamp
-          in: query
-          required: false
-          type: string
-          format: date-time
-        - name: ImageList
-          in: query
-          required: false
-          type: array
-          items: {}
-          collectionFormat: multi
-          uniqueItems: false
-        - name: Questionnaire
-          in: query
-          required: false
-          type: array
-          items: {}
-          collectionFormat: multi
-          uniqueItems: false
-      responses:
-        '200':
-          description: Success
-        '400':
-          description: Bad Request
   '/api/fotoquest/SubmissionQuery/{id}':
     get:
       tags:
@@ -80,7 +33,7 @@ paths:
     get:
       tags:
         - SubmissionQuery
-      summary: Get Submitted image
+      summary: Get Submitted images.
       operationId: GetImage
       consumes: []
       produces:
@@ -129,31 +82,110 @@ paths:
             $ref: '#/definitions/FileStreamResult'
         '400':
           description: Bad Request
+  /api/fotoquest/SubmissionCommand:
+    post:
+      tags:
+        - SubmissionCommand
+      summary: Submit the FotoQuest data
+      operationId: SubmitData
+      consumes: []
+      produces: []
+      parameters:
+        - name: Id
+          in: query
+          required: false
+          type: string
+          format: uuid
+        - name: UserId
+          in: query
+          required: false
+          type: string
+          format: uuid
+        - name: Coordinates
+          in: query
+          required: false
+          type: string
+        - name: TimeStamp
+          in: query
+          required: false
+          type: string
+          format: date-time
+        - name: ImageList
+          in: query
+          required: false
+          type: array
+          items: {}
+          collectionFormat: multi
+          uniqueItems: false
+        - name: Questionnaire
+          in: query
+          required: false
+          type: array
+          items: {}
+          collectionFormat: multi
+          uniqueItems: false
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+  /api/User:
+    get:
+      tags:
+        - User
+      summary: Get User
+      operationId: GetUser
+      consumes: []
+      produces: []
+      parameters:
+        - name: Id
+          in: query
+          required: false
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - User
+      summary: Create User
+      operationId: CreateUser
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: Id
+          in: query
+          required: false
+          type: string
+          format: uuid
+        - name: FirstName
+          in: query
+          required: false
+          type: string
+        - name: LastName
+          in: query
+          required: false
+          type: string
+        - name: Email
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserViewModel'
+        '400':
+          description: Bad Request
 definitions:
-  SubmissionViewModel:
-    type: object
-    properties:
-      id:
-        format: uuid
-        type: string
-      userId:
-        format: uuid
-        type: string
-      coordinates:
-        type: string
-      timeStamp:
-        format: date-time
-        type: string
-      imageList:
-        uniqueItems: false
-        type: array
-        items:
-          $ref: '#/definitions/ImageViewModel'
-      questionnaire:
-        uniqueItems: false
-        type: array
-        items:
-          $ref: '#/definitions/QuestionnaireViewModel'
   ImageViewModel:
     type: object
     properties:
@@ -166,14 +198,13 @@ definitions:
         format: uuid
         type: string
       direction:
-        format: int32
         enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-        type: integer
+          - North
+          - East
+          - South
+          - West
+          - Ground
+        type: string
   QuestionnaireViewModel:
     type: object
     properties:
@@ -288,3 +319,39 @@ definitions:
       hasValue:
         type: boolean
         readOnly: true
+  UserViewModel:
+    type: object
+    properties:
+      id:
+        format: uuid
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      email:
+        type: string
+  SubmissionViewModel:
+    type: object
+    properties:
+      id:
+        format: uuid
+        type: string
+      userId:
+        format: uuid
+        type: string
+      coordinates:
+        type: string
+      timeStamp:
+        format: date-time
+        type: string
+      imageList:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/ImageViewModel'
+      questionnaire:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/QuestionnaireViewModel'

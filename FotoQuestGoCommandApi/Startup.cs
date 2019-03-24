@@ -46,6 +46,7 @@ namespace FotoQuestGoCommandApi
             {
                 c.SwaggerDoc("v1", new Info { Title = "FotoQuest Go Command API", Version = "v1" });
                 c.IncludeXmlComments(System.IO.Path.Combine(System.AppContext.BaseDirectory, "FotoQuestGoCommandApi.xml"));
+                c.DescribeAllEnumsAsStrings();
             });
         }
 
@@ -73,7 +74,10 @@ namespace FotoQuestGoCommandApi
             {
                 var submissionService = serviceScope.ServiceProvider.GetService<SubmissionDataContext>();
                 submissionService.Database.EnsureCreated();
+            }
 
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
                 var userService = serviceScope.ServiceProvider.GetService<UserContext>();
                 userService.Database.EnsureCreated();
             }

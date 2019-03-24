@@ -17,16 +17,10 @@ namespace FotoQuestGoCommandApi.Controllers
     [Route("api/fotoquest/[controller]")]
     public class SubmissionCommandController : ControllerBase
     {
-        private readonly ISubmissionUnitOfWork _submissionUnitOfWork;
-        private readonly IImageHandler _imageHandler;
-        private readonly ISubmissionQueryService _submissionQueryService;
         private readonly ISubmissionCommandService _submissionCommandService;
 
-        public SubmissionCommandController(ISubmissionUnitOfWork submissionUnitOfWork, IImageHandler imageHandler, ISubmissionQueryService submissionQueryService, ISubmissionCommandService submissionCommandService)
+        public SubmissionCommandController(ISubmissionCommandService submissionCommandService)
         {
-            _submissionUnitOfWork = submissionUnitOfWork;
-            _imageHandler = imageHandler;
-            _submissionQueryService = submissionQueryService;
             _submissionCommandService = submissionCommandService;
         }
 

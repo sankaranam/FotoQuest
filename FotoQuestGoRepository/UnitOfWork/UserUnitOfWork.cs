@@ -12,10 +12,7 @@ namespace FotoQuestGoRepository.UnitOfWork
             _context = context;
             UserRepository = userRepository;
         }
-
-        public IUserRepository UserRepo => throw new System.NotImplementedException();
-
-        public IUserRepository UserRepository { get; }
+       public IUserRepository UserRepository { get; }
 
         public async Task<int> CompleteAsync()
         {

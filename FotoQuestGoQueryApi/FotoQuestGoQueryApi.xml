@@ -23,7 +23,7 @@
         </member>
         <member name="M:FotoQuestGoQueryApi.Controllers.SubmissionQueryController.GetImage(FotoQuestGo.DataSubmissionService.Interfaces.ImageQueryViewModel)">
             <summary>
-            Get Submission data for Id
+            Get Submitted images.
             </summary>
             <returns>OK</returns>
             <returns>BadRequest</returns>

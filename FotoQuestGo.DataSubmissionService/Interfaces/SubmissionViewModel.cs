@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace FotoQuestGo.DataSubmissionService.Interfaces
 {
@@ -24,6 +25,7 @@ namespace FotoQuestGo.DataSubmissionService.Interfaces
         /// <summary>
         /// Submission related list of Images
         /// </summary>
+        [DataType("Array<ImageViewModel>")]
         public ICollection<ImageViewModel> ImageList { set; get; }
         /// <summary>
         /// Submission related list of Question
