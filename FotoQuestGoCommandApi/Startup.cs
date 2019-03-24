@@ -1,4 +1,7 @@
-﻿using FotoQuestGoRepository.Data;
+﻿using AutoMapper;
+using FotoQuestGo.DataSubmissionService.Interfaces;
+using FotoQuestGo.DataSubmissionService.Wireup;
+using FotoQuestGoRepository.Data;
 using FotoQuestGoRepository.wireup;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,13 +23,14 @@ namespace FotoQuestGoCommandApi
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+        {        
 
             var connectionString = Configuration.GetConnectionString("DatabaseConnection");
             services.AddDbContext<SubmissionDataContext>(options => options.UseSqlServer(connectionString));
             services.AddDbContext<UserContext>(options => options.UseSqlServer(connectionString));
             RepositoryDiConfig.WireUp(services);
+            ServiceWireup.WireUp(services);
+            services.AddAutoMapper(typeof(UserProfile));
             services.AddMvc();
 
             services.AddCors(options =>
@@ -41,22 +45,28 @@ namespace FotoQuestGoCommandApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "FotoQuest Go Command API", Version = "v1" });
+                c.IncludeXmlComments(System.IO.Path.Combine(System.AppContext.BaseDirectory, "FotoQuestGoCommandApi.xml"));
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "FotoQuest Go Command API v1");
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                //app.UseHsts();
-            }
 
-            //app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseMvc();
 
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())

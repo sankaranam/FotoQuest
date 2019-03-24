@@ -6,16 +6,8 @@ namespace FotoQuestGoRepository.Models
     public class ImageDetails
     {
         public Guid Id { get; set; }
+        public string FileName { get; set; }    
         public Guid SubmissionId { get; set; }
         public Direction Direction { get; set; }
-    }
-
-    public enum Direction
-    {
-        North,
-        East,
-        South,
-        West,
-        Ground
     }
 }

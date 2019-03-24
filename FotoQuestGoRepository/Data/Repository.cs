@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace FotoQuestGoRepository.Data
@@ -15,19 +16,20 @@ namespace FotoQuestGoRepository.Data
 		    Context = context;
 		}
 
-		public void Add(TEntity entity)
+		public async Task<TEntity> AddAsync(TEntity entity)
 		{
-			Context.Add(entity);
-		}
+			var entry =  await Context.AddAsync(entity);
+            return entry.Entity;
+        }
 
 	    public void Update(TEntity entity)
 	    {
 		    Context.Update(entity);
 	    }
 
-		public void AddRange(IEnumerable<TEntity> entities)
+		public async Task AddRangeAsync(IEnumerable<TEntity> entities)
 		{
-			Context.AddRange(entities);
+			await Context.AddRangeAsync(entities);
 		}
 
 		public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)

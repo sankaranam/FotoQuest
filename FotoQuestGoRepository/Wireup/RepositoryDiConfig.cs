@@ -15,6 +15,8 @@ namespace FotoQuestGoRepository.wireup
 
             services.AddScoped<ISubmissionUnitOfWork, SubmissionUnitOfWork>();
             services.AddScoped<IUserUnitOfWork, UserUnitOfWork>();
+
+            services.AddScoped<IImageHandler, ImageHandler>();
         }
     }
 }

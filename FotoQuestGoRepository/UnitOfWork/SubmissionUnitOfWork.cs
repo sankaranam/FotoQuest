@@ -1,4 +1,5 @@
 ﻿using FotoQuestGoRepository.Data;
+using System.Threading.Tasks;
 
 namespace FotoQuestGoRepository.UnitOfWork
 {
@@ -18,9 +19,9 @@ namespace FotoQuestGoRepository.UnitOfWork
         public IQuestionnaireDataRepository QuestionnaireDataRepository { get; }
         public IImageDetailsRepository ImageDetailsRepository { get; }
 
-        public int Complete()
+        public async Task<int> CompleteAsync()
         {
-            return _context.SaveChanges();
+            return await _context.SaveChangesAsync();
         }
 
         public void Dispose()

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FotoQuestGoQueryApi</name>
+    </assembly>
+    <members>
+        <member name="T:FotoQuestGoQueryApi.Controllers.SubmissionQueryController">
+            <summary>
+            Submission data query controller.
+            </summary>
+        </member>
+        <member name="M:FotoQuestGoQueryApi.Controllers.SubmissionQueryController.#ctor(FotoQuestGo.DataSubmissionService.Handlers.ISubmissionQueryService)">
+            <summary>
+            Submission data query controller ctor.
+            </summary>
+        </member>
+        <member name="M:FotoQuestGoQueryApi.Controllers.SubmissionQueryController.Get(System.Nullable{System.Guid})">
+            <summary>
+            Get Submission data for Id
+            </summary>
+            <returns>OK</returns>
+            <returns>BadRequest</returns>
+        </member>
+        <member name="M:FotoQuestGoQueryApi.Controllers.SubmissionQueryController.GetImage(FotoQuestGo.DataSubmissionService.Interfaces.ImageQueryViewModel)">
+            <summary>
+            Get Submission data for Id
+            </summary>
+            <returns>OK</returns>
+            <returns>BadRequest</returns>
+            api/fotoquest/SubmissionQuery/image
+        </member>
+    </members>
+</doc>

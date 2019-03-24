@@ -1,5 +1,6 @@
 ﻿using FotoQuestGoRepository.Data;
 using System;
+using System.Threading.Tasks;
 
 namespace FotoQuestGoRepository.UnitOfWork
 {
@@ -8,6 +9,6 @@ namespace FotoQuestGoRepository.UnitOfWork
         ISubmissionDataRepository SubmissionDataRepository { get; }
         IQuestionnaireDataRepository QuestionnaireDataRepository { get; }
         IImageDetailsRepository ImageDetailsRepository { get; }
-        int Complete();
+        Task<int> CompleteAsync();
     }
 }
