@@ -5,6 +5,11 @@ namespace FotoQuestGoRepository.Models
 {
     public class SubmissionData    
     {
+        public SubmissionData()
+        {
+            Id = Guid.NewGuid();
+        }
+
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public string Coordinates { get; set; }

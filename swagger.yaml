@@ -1,0 +1,290 @@
+swagger: '2.0'
+info:
+  version: v1
+  title: FotoQuest Go API (combined swagger.json files)
+paths:
+  /api/fotoquest/SubmissionCommand:
+    post:
+      tags:
+        - SubmissionCommand
+      summary: Submit the FotoQuest data
+      operationId: SubmitData
+      consumes: []
+      produces: []
+      parameters:
+        - name: Id
+          in: query
+          required: false
+          type: string
+          format: uuid
+        - name: UserId
+          in: query
+          required: false
+          type: string
+          format: uuid
+        - name: Coordinates
+          in: query
+          required: false
+          type: string
+        - name: TimeStamp
+          in: query
+          required: false
+          type: string
+          format: date-time
+        - name: ImageList
+          in: query
+          required: false
+          type: array
+          items: {}
+          collectionFormat: multi
+          uniqueItems: false
+        - name: Questionnaire
+          in: query
+          required: false
+          type: array
+          items: {}
+          collectionFormat: multi
+          uniqueItems: false
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+  '/api/fotoquest/SubmissionQuery/{id}':
+    get:
+      tags:
+        - SubmissionQuery
+      summary: Get Submission data for Id
+      operationId: Get
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/SubmissionViewModel'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+  /api/fotoquest/SubmissionQuery/Image:
+    get:
+      tags:
+        - SubmissionQuery
+      summary: Get Submitted image
+      operationId: GetImage
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: SubmissionId
+          in: query
+          required: true
+          type: string
+          format: uuid
+        - name: ImageId
+          in: query
+          required: true
+          type: string
+          format: uuid
+        - name: FileName
+          in: query
+          required: true
+          type: string
+        - name: ImageVersion
+          in: query
+          required: true
+          type: integer
+          format: int32
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+        - name: Width
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: Height
+          in: query
+          required: false
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/FileStreamResult'
+        '400':
+          description: Bad Request
+definitions:
+  SubmissionViewModel:
+    type: object
+    properties:
+      id:
+        format: uuid
+        type: string
+      userId:
+        format: uuid
+        type: string
+      coordinates:
+        type: string
+      timeStamp:
+        format: date-time
+        type: string
+      imageList:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/ImageViewModel'
+      questionnaire:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/QuestionnaireViewModel'
+  ImageViewModel:
+    type: object
+    properties:
+      id:
+        format: uuid
+        type: string
+      file:
+        $ref: '#/definitions/IFormFile'
+      submissionId:
+        format: uuid
+        type: string
+      direction:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+        type: integer
+  QuestionnaireViewModel:
+    type: object
+    properties:
+      id:
+        format: uuid
+        type: string
+      submissionId:
+        format: uuid
+        type: string
+      question:
+        type: string
+      answer:
+        type: string
+  IFormFile:
+    type: object
+    properties:
+      contentType:
+        type: string
+        readOnly: true
+      contentDisposition:
+        type: string
+        readOnly: true
+      headers:
+        type: object
+        additionalProperties:
+          uniqueItems: false
+          type: array
+          items:
+            type: string
+        readOnly: true
+      length:
+        format: int64
+        type: integer
+        readOnly: true
+      name:
+        type: string
+        readOnly: true
+      fileName:
+        type: string
+        readOnly: true
+  FileStreamResult:
+    type: object
+    properties:
+      fileStream:
+        $ref: '#/definitions/Stream'
+      contentType:
+        type: string
+        readOnly: true
+      fileDownloadName:
+        type: string
+      lastModified:
+        format: date-time
+        type: string
+      entityTag:
+        $ref: '#/definitions/EntityTagHeaderValue'
+      enableRangeProcessing:
+        type: boolean
+  Stream:
+    type: object
+    properties:
+      canRead:
+        type: boolean
+        readOnly: true
+      canSeek:
+        type: boolean
+        readOnly: true
+      canTimeout:
+        type: boolean
+        readOnly: true
+      canWrite:
+        type: boolean
+        readOnly: true
+      length:
+        format: int64
+        type: integer
+        readOnly: true
+      position:
+        format: int64
+        type: integer
+      readTimeout:
+        format: int32
+        type: integer
+      writeTimeout:
+        format: int32
+        type: integer
+  EntityTagHeaderValue:
+    type: object
+    properties:
+      tag:
+        $ref: '#/definitions/StringSegment'
+        readOnly: true
+      isWeak:
+        type: boolean
+        readOnly: true
+  StringSegment:
+    type: object
+    properties:
+      buffer:
+        type: string
+        readOnly: true
+      offset:
+        format: int32
+        type: integer
+        readOnly: true
+      length:
+        format: int32
+        type: integer
+        readOnly: true
+      value:
+        type: string
+        readOnly: true
+      hasValue:
+        type: boolean
+        readOnly: true

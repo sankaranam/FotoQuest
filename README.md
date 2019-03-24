@@ -1,7 +1,7 @@
 # FotoQuest Go API
 
-This is a sample application designed to submit and retrive image and metadata for fotoquest-go application
-This project has the following architecture.
+This is a sample application designed to submit and retrieve image and metadata for fotoquest-go application
+This project is implemented in docker and using microservice for sepcific jobs viz, command API, Query API, Database.
 
 
 ### Following is the general description of the solution

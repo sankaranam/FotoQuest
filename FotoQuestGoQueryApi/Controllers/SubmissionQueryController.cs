@@ -51,7 +51,7 @@ namespace FotoQuestGoQueryApi.Controllers
         }
 
         /// <summary>
-        /// Get Submission data for Id
+        /// Get Submitted images.
         /// </summary>
         /// <returns>OK</returns>
         /// <returns>BadRequest</returns>
