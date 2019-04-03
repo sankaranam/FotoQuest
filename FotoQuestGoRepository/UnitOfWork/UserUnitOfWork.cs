@@ -5,9 +5,9 @@ namespace FotoQuestGoRepository.UnitOfWork
 {
     public class UserUnitOfWork : IUserUnitOfWork
     {
-        private readonly UserContext _context;
+        private readonly SubmissionDataContext _context;
 
-        public UserUnitOfWork(UserContext context,IUserRepository userRepository)
+        public UserUnitOfWork(SubmissionDataContext context,IUserRepository userRepository)
         {
             _context = context;
             UserRepository = userRepository;

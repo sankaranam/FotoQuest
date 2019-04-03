@@ -27,7 +27,6 @@ namespace FotoQuestGoCommandApi
 
             var connectionString = Configuration.GetConnectionString("DatabaseConnection");
             services.AddDbContext<SubmissionDataContext>(options => options.UseSqlServer(connectionString));
-            services.AddDbContext<UserContext>(options => options.UseSqlServer(connectionString));
             RepositoryDiConfig.WireUp(services);
             ServiceWireup.WireUp(services);
             services.AddAutoMapper(typeof(UserProfile));
@@ -74,13 +73,7 @@ namespace FotoQuestGoCommandApi
             {
                 var submissionService = serviceScope.ServiceProvider.GetService<SubmissionDataContext>();
                 submissionService.Database.EnsureCreated();
-            }
-
-            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            {
-                var userService = serviceScope.ServiceProvider.GetService<UserContext>();
-                userService.Database.EnsureCreated();
-            }
+            }           
         }
     }
 }

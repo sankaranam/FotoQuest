@@ -27,7 +27,6 @@ namespace FotoQuestGoQueryApi
 
             var connectionString = Configuration.GetConnectionString("DatabaseConnection");
             services.AddDbContext<SubmissionDataContext>(options => options.UseSqlServer(connectionString));
-            services.AddDbContext<UserContext>(options => options.UseSqlServer(connectionString));
             RepositoryDiConfig.WireUp(services);
             ServiceWireup.WireUp(services);
             services.AddAutoMapper(typeof(UserProfile));

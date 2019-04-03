@@ -14,5 +14,7 @@ namespace FotoQuestGoRepository.Data
         public DbSet<QuestionnaireData> QuestionnaireDatas { get; set; }
 
         public DbSet<ImageDetails> ImageDetails { get; set; }
+
+        public DbSet<UserDetails> UserDetails { get; set; }
     }    
 }

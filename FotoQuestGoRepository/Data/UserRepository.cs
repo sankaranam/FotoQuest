@@ -4,7 +4,7 @@ namespace FotoQuestGoRepository.Data
 {
     public class UserRepository : Repository<UserDetails>, IUserRepository
     {
-        public UserRepository(UserContext context) : base(context)
+        public UserRepository(SubmissionDataContext context) : base(context)
         {
         }
     }
