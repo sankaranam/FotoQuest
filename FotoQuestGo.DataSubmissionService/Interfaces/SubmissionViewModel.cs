@@ -17,20 +17,24 @@ namespace FotoQuestGo.DataSubmissionService.Interfaces
         /// <summary>
         /// Coordinates of location
         /// </summary>
+        [Required]
         public string Coordinates { get; set; }
         /// <summary>
         /// Submission TimeStamp
         /// </summary>
+        [Required]
         public DateTimeOffset? TimeStamp { get; set; }
         /// <summary>
         /// Submission related ImageMetaDataList
         /// </summary>
         [DataType("Array<ImageViewModel>")]
+        [Required]
         public ICollection<ImageViewModel> ImageMetaDataList { set; get; }
         /// <summary>
         /// Submission related list of Question
         /// </summary>
         [DataType("Array<QuestionnaireViewModel>")]
+        [Required]
         public ICollection<QuestionnaireViewModel> Questionnaire { get; set; }
     }
 }

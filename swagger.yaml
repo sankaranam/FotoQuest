@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   version: v1
-  title: FotoQuest Go Query API
+  title: FotoQuest Go API
 paths:
   '/api/fotoquest/SubmissionQuery/{id}':
     get:

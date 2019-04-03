@@ -38,6 +38,7 @@ namespace FotoQuestGoCommandApi.Controllers
         {
             var userData = _mapper.Map<UserDetails>(userViewModel);
             var user = await _userUnitOfWork.UserRepository.AddAsync(userData);
+            await _userUnitOfWork.CompleteAsync();
             var userVd = _mapper.Map<UserViewModel>(user);
             return Ok(user);
         }

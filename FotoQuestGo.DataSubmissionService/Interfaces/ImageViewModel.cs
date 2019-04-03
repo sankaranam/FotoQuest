@@ -1,6 +1,6 @@
 ﻿using FotoQuestGoRepository.Models;
-using Microsoft.AspNetCore.Http;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FotoQuestGo.DataSubmissionService.Interfaces
 {
@@ -13,6 +13,7 @@ namespace FotoQuestGo.DataSubmissionService.Interfaces
         /// <summary>
         /// FileName
         /// </summary>
+        [Required]
         public string FileName { get; set; }
         /// <summary>
         /// SubmissionId
@@ -21,6 +22,7 @@ namespace FotoQuestGo.DataSubmissionService.Interfaces
         /// <summary>
         /// Direction of image
         /// </summary>
+        [Required]
         public Direction Direction { get; set; }
     }
 }

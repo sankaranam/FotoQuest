@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FotoQuestGo.DataSubmissionService.Interfaces
 {
@@ -15,10 +16,12 @@ namespace FotoQuestGo.DataSubmissionService.Interfaces
         /// <summary>
         /// Question
         /// </summary>
+        [Required]
         public string Question { get; set; }
         /// <summary>
         /// Answer
         /// </summary>
+        [Required]
         public string Answer { get; set; }
     }
 }
